@@ -95,8 +95,30 @@ infoBtn.addEventListener('click', function(e){
 
 Ti.UI.currentWindow.setLeftNavButton(infoBtn);
 
+//add search bar to tableview
 
+var search = Titanium.UI.createSearchBar({
+	barColor:'#000',
+	showCancel:true,
+	height:43,
+	top:0
+});
 
+search.addEventListener('change', function(e)
+{
+   e.value // search string as user types
+});
+search.addEventListener('return', function(e)
+{
+   search.blur();
+});
+search.addEventListener('cancel', function(e)
+{
+   search.blur();
+});
+ 
+
+win.add(search);
 
 var tableview = Titanium.UI.createTableView({
 	data:data,
@@ -147,29 +169,6 @@ tableview.addEventListener('click', function(e)
 	}
 });
 
-//add search bar to tableview
 
-var search = Titanium.UI.createSearchBar({
-	barColor:'#000',
-	showCancel:true,
-	height:43,
-	top:0
-});
-
-search.addEventListener('change', function(e)
-{
-   e.value // search string as user types
-});
-search.addEventListener('return', function(e)
-{
-   search.blur();
-});
-search.addEventListener('cancel', function(e)
-{
-   search.blur();
-});
- 
-
-tableview.add(search);
 
 
